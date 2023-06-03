@@ -1,4 +1,6 @@
 const mongoose = require('mongoose')
+const { Schema } = require("mongoose")
+const Client = require('./clientModel')
 
 const commandeSchema = mongoose.Schema(
     {
@@ -7,7 +9,7 @@ const commandeSchema = mongoose.Schema(
             required: true,
         },
         dateEcheance: {
-            type: Number,
+            type: String,
             required: true,
            
         },
@@ -30,7 +32,12 @@ const commandeSchema = mongoose.Schema(
         documentUrl: {
             type: String,
             required: false,
-        }
+        },
+        client: {
+             type: Schema.Types.ObjectId,
+              ref: Client, 
+              required: true 
+            },
     },
     {
         timestamps: true

@@ -6,17 +6,20 @@ var ObjectId = mongoose.Types.ObjectId;
 
 const getCommandes = async(req, res) => {
     try {
-        const commandes = await Commande.find({});
+        var commandes = await Commande.find({}).populate('client');
         res.status(200).json(commandes);
+       
     } catch (error) {
         res.status(500).json({message: error.message})
     }
 };
 
+
+
 const getCommandesById = async(req, res) =>{
     try {
         const {id} = req.params;
-        const commande = await Commande.findById(id);
+        const commande = await Commande.findById(id).populate('client');
         res.status(200).json(commande);
     } catch (error) {
         res.status(500).json({message: error.message})
