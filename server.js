@@ -8,6 +8,8 @@ app.use(express.urlencoded({extended: false}))
 
 /* routage */
 require("./routers/routerProduct")(app);
+require("./routers/routerClient")(app);
+require('./routers/routerCommande')(app);
 
 mongoose.
 connect('mongodb+srv://admin:admin@nodeapi2023.ging3ho.mongodb.net/node-API?retryWrites=true&w=majority')
