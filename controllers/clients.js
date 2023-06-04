@@ -6,7 +6,8 @@ var ObjectId = mongoose.Types.ObjectId;
 
 const getClients = async(req, res) => {
     try {
-        Client.aggregate([
+        
+        const clients = await Client.aggregate([
             {
               $lookup: {
                 from: "commandes",
@@ -15,8 +16,7 @@ const getClients = async(req, res) => {
                 as: "commandes",
               },
             },
-          ])
-        const clients = await Client.find({});
+          ]);
        res.status(200).json(clients);
     } catch (error) {
         res.status(500).json({message: error.message})
@@ -32,6 +32,8 @@ const getClientById = async(req, res) =>{
         res.status(500).json({message: error.message})
     }
 };
+
+
 
 const postClients =async(req, res) => {
     try {
