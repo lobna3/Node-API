@@ -6,14 +6,14 @@ import {
   Route
 } from "react-router-dom";
 import Home from './pages/Home';
-import Detail from './pages/Detail';
+import Details from './pages/Detail';
 
 function App() {
   return (
     <BrowserRouter>
     <Routes>
     <Route path="/" element={<Home />} />
-    <Route path="/:id" element={<Detail />} />
+    <Route path="/:id" element={<Details />} />
     </Routes>
   </BrowserRouter>
   );
