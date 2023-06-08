@@ -2,7 +2,7 @@ import { ADD_CLIENT, GET_CLIENT_LIST, GET_CLIENT_LIST_SUCCESS, UPDATE_CLIENT } f
 
 const clientInitState = {
     loading: false,
-    list: [],
+    clientlist: [],
     selectedClient: {}
 }
 
@@ -14,7 +14,7 @@ const clientReducer = (state = clientInitState, action) => {
         case GET_CLIENT_LIST:
             return { ...state, loading: true }
         case GET_CLIENT_LIST_SUCCESS:
-            return { ...state, loading: false, list: payload }
+            return { ...state, loading: false, clientlist: payload }
         case UPDATE_CLIENT:
             return { ...state, selectedClient: payload }
 

@@ -1,11 +1,39 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from "react-redux";
+import { Table, Space, Typography } from "antd";
+import { Link } from "react-router-dom";
 import Sidenav from '../components/sidenav'
 import { useForm } from "react-hook-form";
-
-
+import {getClientApi} from "../redux/actions/client.actions";
+const { Text } = Typography;
 function Details() {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const onSubmit = data => console.log(data);
+
+  const columns = [
+    {
+      title: "Client",
+      dataIndex: "nom",
+      render: (text, record) => (
+        <Space >
+            <input type="checkbox" className="checkmail" />
+          <Link to="/" target="_blank">
+            {record.nom} {record.prenom}
+          </Link>
+        </Space>
+      ),
+    },
+   
+     
+   
+  ];
+
+  const { clientList } = useSelector((state) => state.client);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getClientApi());
+  }, []);
+
   
   return (
  
@@ -221,7 +249,19 @@ function Details() {
              
             </div>
           
-          
+            <div className="card">
+        <div className="card-body">
+          <h5 className="card-title d-flex text-dark"> Listes client</h5>
+          <div>
+      <Table
+        dataSource={clientList}
+        columns={columns}
+       
+      />
+    </div>
+         
+        </div>
+      </div>
                 <div className="container sm:px-10">
             <div className="block xl:grid grid-cols-2 gap-4">
                 <div className="h-screen xl:h-auto py-10 xl:py-0 my-10 xl:my-0">

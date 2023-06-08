@@ -73,7 +73,7 @@ export const deleteClientApi = (id) => async dispatch => {
         dispatch(addClient());
         let result = await deleteApi('delete_clients/' + id, config);
         if (result) {
-            dispatch(getClienttApi());
+            dispatch(getClientApi());
         }
     } catch (error) {
         console.log("ERROR", error.message)
