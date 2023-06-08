@@ -1,8 +1,14 @@
 import React from 'react'
 import Sidenav from '../components/sidenav'
+import { useForm } from "react-hook-form";
+
 
 function Details() {
+  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const onSubmit = data => console.log(data);
+  
   return (
+ 
     <div className="py-5 md:py-0 bg-black/[0.15] dark:bg-transparent">
     <div className="flex mt-[4.7rem] md:mt-0 overflow-hidden">
   <Sidenav/>
@@ -215,6 +221,7 @@ function Details() {
              
             </div>
           
+          
                 <div className="container sm:px-10">
             <div className="block xl:grid grid-cols-2 gap-4">
                 <div className="h-screen xl:h-auto py-10 xl:py-0 my-10 xl:my-0">
@@ -222,14 +229,16 @@ function Details() {
                         <h2 className="intro-x font-bold text-2xl xl:text-3xl text-center xl:text-left">
                             Add User
                         </h2>
-                       
+                        <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="">
-                            <input type="text" className="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="First Name"/>
-                            <input type="text" className="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="Last Name"/>
-                            <input type="text" className="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="Email"/>
-                            <input type="text" className="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="Password"/>
-                            <input type="text" className="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="Adresse"/>
-                            <input type="text" className="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="Telephone"/>
+                            <input {...register("First Name")} type="text" className="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="First Name"/>
+                            <input {...register("Last Name", { required: true })}type="text" className="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="Last Name"/>
+                            {errors.exampleRequired && <span>Last Name is required</span>}
+                            <input {...register("Email", { required: true })} type="text" className="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="Email"/>
+                            {errors.exampleRequired && <span>Email is required</span>}
+                            <input {...register("Password")}  type="text" className="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="Password"/>
+                            <input {...register("Adresse")}  type="text" className="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="Adresse"/>
+                            <input {...register("Telephone")}  type="text" className="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="Telephone"/>
                             <div className="intro-x w-full grid grid-cols-12 gap-4 h-1 mt-3">
                                 <div className="col-span-3 h-full rounded bg-success"></div>
                                 <div className="col-span-3 h-full rounded bg-success"></div>
@@ -240,9 +249,10 @@ function Details() {
                         </div>
                       
                         <div className="intro-x mt-5 xl:mt-8 text-center xl:text-left">
-                            <button className="btn btn-primary py-3 px-4 w-full xl:w-32 xl:mr-3 align-top">Add</button>
-                          
+        
+                            <input type="submit" className='btn btn-primary py-3 px-4 w-full xl:w-32 xl:mr-3 align-top' />
                         </div>
+                        </form>
                     </div>
                 </div>
               
