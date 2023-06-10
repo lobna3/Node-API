@@ -1,10 +1,17 @@
 const express = require('express')
 const mongoose = require('mongoose')
 
+const  dotenv  =  require ( "dotenv" ) ;
+dotenv . config ( ) ;
+
+var cors = require('cors')
+
+
 const app = express()
 
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
+app.use(cors()) // Use this after the variable declaration
 
 /* routage */
 require("./routers/routerProduct")(app);

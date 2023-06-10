@@ -252,7 +252,7 @@ function Details() {
             <div className="card">
         <div className="card-body">
           <h5 className="card-title d-flex text-dark"> Listes client</h5>
-          <div>
+        <div>
       <Table
         dataSource={clientList}
         columns={columns}
@@ -269,7 +269,7 @@ function Details() {
                         <h2 className="intro-x font-bold text-2xl xl:text-3xl text-center xl:text-left">
                             Add User
                         </h2>
-                        <form onSubmit={handleSubmit(onSubmit)}>
+                      <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="">
                             <input {...register("First Name")} type="text" className="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="First Name"/>
                             <input {...register("Last Name", { required: true })}type="text" className="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="Last Name"/>
@@ -292,7 +292,7 @@ function Details() {
         
                             <input type="submit" className='btn btn-primary py-3 px-4 w-full xl:w-32 xl:mr-3 align-top' />
                         </div>
-                        </form>
+                        </form> 
                     </div>
                 </div>
               
